@@ -1,9 +1,9 @@
-function [Bits,Symbols]=Transmitter(M,N,Block_Num,C)
+function [Bits,Symbols0]=Transmitter(M,N,Block_Num,C)
     theta=N*(2^M);
     P=2*(theta+C);%一个完整符号的长度
     x0=0.123456;
     Bits=randi([0,1],1,N*(M+1)*Block_Num);
-    Symbols=zeros(P,Block_Num); 
+    Symbols0=zeros(P,Block_Num); 
     for b=1:Block_Num
         cx0=generate_chaos_seq(theta,x0);
         cx=(cx0-mean(cx0))/std(cx0);
@@ -27,8 +27,8 @@ function [Bits,Symbols]=Transmitter(M,N,Block_Num,C)
             info_seq=info_seq+qn*cx2;
         end
         ref=[cx(end-C+1:end),cx];
-        info=[info_seq(end-C+1:end),infO_seq];
-        Symbols(:,b)=[ref,info].';
+        info=[info_seq(end-C+1:end),info_seq];
+        Symbols0(:,b)=[ref,info].';
     end
 end
             
