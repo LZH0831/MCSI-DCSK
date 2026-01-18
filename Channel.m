@@ -1,9 +1,9 @@
 function Symbol1=Channel(Symbol0,L,SNR)
     [P,Block_Num]=size(Symbol0);
     if L==1
-        h=1;%退化为AWGN信道
+        aphla=1;%退化为AWGN信道
     else
-        h=(sqrt(1/(2*L)))*(randn(1,L)+1i*randn(1,L));
+        aphla=(sqrt(1/(2*L)))*(randn(1,L)+1i*randn(1,L));
     end
     Symbol1=zeros(P,Block_Num);
     for b=1:Block_Num
@@ -11,7 +11,7 @@ function Symbol1=Channel(Symbol0,L,SNR)
         for l=1:L
             Tau=l-1;
             shifted = [zeros(Tau, 1); Symbol0(1:end-Tau, b)];
-            cur_block = cur_block + h(l) * shifted;
+            cur_block = cur_block + aphla(l) * shifted;
         end
         pre_block=zeros(P,1);
         if b>1
