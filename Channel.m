@@ -18,7 +18,7 @@ function Symbols1=Channel(Symbols0,L,N,M,SNR)
             for l=2:L
                 Tau=l-1;
                 tail=Symbols0(end-Tau+1:end,b-1);
-                pre_block(1:Tau)=pre_block(1:Tau)+h(l)*tail;
+                pre_block(1:Tau)=pre_block(1:Tau)+aphla(l)*tail;
             end
         end
         Symbols1(:,b)=cur_block+pre_block;
