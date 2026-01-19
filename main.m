@@ -3,7 +3,7 @@ clear; clc; close all;
 M = 7;            
 N = 2;            
 C = 0;             
-Block_Num = 10000;   
+Block_Num = 10000;    
 L = 1;
 
 total=zeros(1,21);
@@ -20,7 +20,7 @@ end
 figure();
 box on;hold on;
 plot(0:1:20,total(1,:),'bo-');
-set(gca,'Yscalse','log');
+set(gca,'Yscale','log');
 ylim([1e-6 1]);
 xlabel('Eb/N0 (dB)');
 ylabel('BER');
