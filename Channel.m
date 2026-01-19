@@ -25,12 +25,11 @@ function Symbols1=Channel(Symbols0,L,N,M,SNR)
     end
     
     nr=randn(P,Block_Num);          
-    ni=randn(P,Block_Num);          
-    Noise=(sqrt(2)/2)*(nr+1i*ni); 
+    ni=randn(P,Block_Num);
     theta = N * 2^M; 
-    Eb_actual = theta * (N + 1) / (N * (M + 1));
-    noise_scale = sqrt(Eb_actual / SNR);
-    Symbols1 = Symbols1 + noise_scale * Noise;
+    Eb = theta * (N + 1) / (N * (M + 1));  
+    Noise=sqrt(Eb / SNR)*(sqrt(2)/2)*(nr+1i*ni); 
+    Symbols1 = Symbols1+Noise;
 end
 
 
