@@ -4,8 +4,7 @@ M = 7;
 N = 2;            
 C = 2;             
 Block_Num = 10000;    
-L = 2;
-
+L = 1;
 total=zeros(1,21);
 
 for dB =0:1:24
