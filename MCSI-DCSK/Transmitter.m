@@ -31,7 +31,3 @@ function [Bits,Symbols0]=Transmitter(M,N,Block_Num,C)
         Symbols0(:,b)=[ref,info].';
     end
 end
-            
-
-
-

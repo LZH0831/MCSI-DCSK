@@ -28,13 +28,7 @@ function Symbols1=Channel(Symbols0,L,N,M,SNR)
     
     nr=randn(P,Block_Num);          
     ni=randn(P,Block_Num);
-    theta = N * 2^M; 
-    Eb = theta * (N + 1) / (N * (M + 1));  
-    Noise=sqrt(Eb / SNR)*(sqrt(2)/2)*(nr+1i*ni); 
+    Eb=mean(sum(abs(Symbols0).^2))/(N*(M+1));
+    Noise=sqrt(Eb/SNR)*(sqrt(2)/2)*(nr+1i*ni); 
     Symbols1 = Symbols1+Noise;
 end
-
-
-
-
-
