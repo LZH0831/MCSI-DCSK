@@ -1,4 +1,4 @@
-function Bitsre=Receiver(m_c,m_s,theta,Block_Num,Symbols1,r_arr,C)
+function Bitsre=Receiver(m_c,m_s,theta,Block_Num,Symbols1,C)
     N=2^m_c;
     P=2^(m_c+1);
     M=2^m_s;
@@ -6,15 +6,14 @@ function Bitsre=Receiver(m_c,m_s,theta,Block_Num,Symbols1,r_arr,C)
     Bitsre_mat=zeros(bits,Block_Num);
 
     H=hadamard(P);
-    W=H(1:N,:);
+    w_info=H(1:N,:);
+    w_r=H(P,:);
     for b_idx=1:Block_Num
         cur_block=Symbols1(C+1:end,b_idx);
         r_segments=reshape(cur_block,theta,P).';
-        r_s=(W*r_segments)/P;
-        r_index=r_arr(b_idx);
-        cx_tilde=r_s(r_index,:);
+        cx_tilde=(w_r*r_segments)/P;
+        r_s=(w_info*r_segments)/P;
         I_m=sum(r_s.^2,2);
-        I_m(r_index)=0;
         [~,a_idx]=max(I_m);
         a_hat=a_idx-1;
         r_inf=r_s(a_idx,:);
