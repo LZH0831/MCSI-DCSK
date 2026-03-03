@@ -19,9 +19,8 @@ function Symbols1=Channel(Symbols0,L,SNR,M,beta,cur_alpha)
         Symbols1(:,b)=cur_block+pre_block;
     end
     nr=randn(P,Block_Num);          
-    ni=randn(P,Block_Num);
     power=mean(sum(abs(Symbols0).^2))/P;
     Eb=power*beta/M;
-    Noise=sqrt(Eb/SNR)*(sqrt(2)/2)*(nr+1i*ni); 
+    Noise=sqrt(Eb/(2*SNR))*nr;
     Symbols1=Symbols1+Noise;
 end

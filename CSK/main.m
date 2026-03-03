@@ -19,7 +19,7 @@ for l=1:length(L_arr)
                 if L==1
                     cur_alpha=1;
                 else
-                    cur_alpha=sqrt(1/(2*L))*(randn(1,L)+1i*randn(1,L));
+                    cur_alpha=sqrt(1/(2*L))*sqrt(randn(1,L).^2+randn(1,L).^2);
                 end
             [Bits,Symbols0]=Transmitter(M,beta,Block_Num,C);
             Symbols1=Channel(Symbols0,L,SNR,M,beta,cur_alpha);
@@ -46,7 +46,8 @@ for i=1:2
 end
 set(gca, 'Yscale', 'log');
 ylim([1e-5 1]);  
-xlim([0 24]);        
+xlim([0 24]);
+set(gca, 'XTick', 0:2:24);         
 xlabel('Eb/N0 (dB)', 'FontSize', 12);
 ylabel('BER', 'FontSize', 12);
 legend('\beta=128, Simulation', ...

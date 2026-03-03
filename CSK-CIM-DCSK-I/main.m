@@ -42,7 +42,6 @@ for l = 1:length(L_arr)
     for m = 1:length(m_c_arr)
         m_c = m_c_arr(m);
         m_s = m_s_arr(m);
-        
         style = [colors{m}, '-', markers{m}]; 
         display_name = sprintf('m_c = %d, m_s = %d, Sim', m_c, m_s);
         if l == 1
@@ -50,7 +49,6 @@ for l = 1:length(L_arr)
         else
             visibility = 'off';
         end
-
         plot(0:1:24, squeeze(total(l, m, :)), style, ...
             'LineWidth', 1.5, ...
             'MarkerSize', 7, ...

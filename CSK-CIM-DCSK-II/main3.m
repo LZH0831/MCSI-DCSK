@@ -12,9 +12,6 @@ num_beta = length(beta_arr);
 num_snr = length(SNR_dB);
 total_BER = zeros(num_L, num_beta, num_snr);
 
-fprintf('=== 开始复现图 3.10: 扩频因子 beta 对 CSK-CIM-DCSK-II 系统性能的影响 ===\n');
-fprintf('固定参数: m_c = %d, m_s = %d\n\n', m_c, m_s);
-
 for l_idx = 1:num_L
     L = L_arr(l_idx);
     if L == 1
@@ -27,7 +24,6 @@ for l_idx = 1:num_L
         theta = beta / 2; 
         bits = m_c + m_s + 1;
         
-        fprintf('  正在仿真: beta = %d (theta = %d)...\n', beta, theta);
         for snr_idx = 1:num_snr
             dB = SNR_dB(snr_idx);
             disp(dB);
